@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { Quote } from "./Quote";
-import { Quotes } from './quotes';
+import { Quotes } from "./quotes";
 
 describe('when rendered', () => {  //from jest
   const { text, author } = Quotes[0];
