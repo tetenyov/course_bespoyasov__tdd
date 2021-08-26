@@ -2,7 +2,8 @@ import { Quotes } from './quotes';
 import styles from './quote.module.css';
 
 export function Quote() {
-  const { text, author } = Quotes[0];
+  const randomIndex = Math.floor(Math.random() * Quotes.length)
+  const { text, author } = Quotes[randomIndex];
 
   return (
     <footer className={styles.quote}>
