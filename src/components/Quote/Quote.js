@@ -1,10 +1,12 @@
 import { Quotes } from './quotes';
 import styles from './quote.module.css';
+import { selectRandomQuote } from './selectRandomQuote';
 
-export function Quote() {
-  const randomIndex = Math.floor(Math.random() * Quotes.length)
-  const { text, author } = Quotes[randomIndex];
+const defaultQuote = selectRandomQuote(Quotes);
 
+export function Quote({ quote = defaultQuote }) {
+  const { text, author } = defaultQuote;
+ 
   return (
     <footer className={styles.quote}>
       <blockquote>
