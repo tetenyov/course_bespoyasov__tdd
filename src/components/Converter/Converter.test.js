@@ -14,7 +14,7 @@ describe('when rendered', () => {
     render(<Converter />);
 
     expect(screen.getByLabelText(/Сумма в долларах/))
-      .toHaveValue(1);
+      .toHaveValue(2.38);
   })
 })
 

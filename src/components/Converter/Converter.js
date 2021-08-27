@@ -2,10 +2,10 @@ import styles from './converter.module.css';
 import { useConverter } from './useConverter';
 
 export function Converter() {
-  const { usd, rub, updateUsd, updateRub } = useConverter();
+  const { usd, rub, updateUsd, updateRub } = useConverter(100, 42);
 
   return (
-    
+
     <form className={styles.converter}>
       <label>
         <p>
