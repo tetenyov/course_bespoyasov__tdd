@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { setOriginalNode, setSyntheticTrailingComments } from 'typescript';
+import { useState, useEffect } from 'react';
 import { rubToUSD, usdToRub } from '../../domain/converter';
 
 export function useConverter(initRubValue, course) {
@@ -7,6 +6,11 @@ export function useConverter(initRubValue, course) {
 
   const [rub, setRub] = useState(initRubValue);
   const [usd, setUsd] = useState(calculatedUsdAmount);
+
+  useEffect(() => {
+    setRub(initRubValue);
+    setUsd(rubToUSD(initRubValue, course));
+  }, [initRubValue, course])
 
   const createUpdater = (direction) => {
     const isFromRub = direction === 'rub-usd';
