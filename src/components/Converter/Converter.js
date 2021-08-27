@@ -5,6 +5,7 @@ export function Converter() {
   const { usd, rub, updateUsd, updateRub } = useConverter();
 
   return (
+    
     <form className={styles.converter}>
       <label>
         <p>
@@ -12,7 +13,7 @@ export function Converter() {
         </p>
         <input 
           type='number'
-          name='rub'
+          name='rub' 
           value={rub}
           onChange={(evt) => updateRub(evt.target.value)}
           min='0'
