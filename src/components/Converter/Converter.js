@@ -1,7 +1,7 @@
 import styles from './converter.module.css';
-import { useConverter } from './useConverter';
+import { useConverter as converterHook} from './useConverter';
 
-export function Converter() {
+export function Converter({ useConverter = converterHook }) { // такая конструкция - для тестов, в тестах мы передаем useCallback как пропс
   const { usd, rub, updateUsd, updateRub } = useConverter(100, 42);
 
   return (
