@@ -1,8 +1,12 @@
 import styles from './converter.module.css';
+import { useSelector } from 'react-redux';
 import { useConverter as converterHook} from './useConverter';
+import { selectCourse } from '../../store/features/course/slice'
 
 export function Converter({ useConverter = converterHook }) { // такая конструкция - для тестов, в тестах мы передаем useCallback как пропс
-  const { usd, rub, updateUsd, updateRub } = useConverter(100, 42);
+  const initialCourse = useSelector(selectCourse);
+  const { usd, rub, updateUsd, updateRub } = useConverter(100, initialCourse);
+
 
   return (
 

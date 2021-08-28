@@ -13,7 +13,7 @@ const originalState = {
 };
 
 export function renderWithStore(ui, { state = originalState, dispatch = null}) {
-  const middleware = applyMiddleware;
+  const middleware = applyMiddleware();
 
   const storeMock = createStore(reducer, state, middleware);
 
