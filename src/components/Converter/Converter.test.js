@@ -5,6 +5,7 @@ import { renderWithStore } from "../../testUtils";
 
 const mockUpdateRub = jest.fn();//fn - метод, который создает функцию, которая следит за тем, что с ней происходит
 const mockUpdateUsd = jest.fn();
+const mockInitialRender = jest.fn();
 
 // jest.mock('./useConverter', () => ({
 //   useConverter() {
@@ -17,7 +18,9 @@ const mockUpdateUsd = jest.fn();
 //   }
 // }))
 
-  function useConverterMock() {
+  function useConverterMock(initialValue, initialCourse) {
+    mockInitialRender(initialCourse);
+
     return {
       rub: 100,
       usd: 2.38,
@@ -27,6 +30,10 @@ const mockUpdateUsd = jest.fn();
   }
 
 const stateMock = { course: { value: 100500 } }
+
+beforeEach(() => jest.clearAllMocks());
+
+afterAll(() => jest.restoreAllMocks());
 
 describe('when rendered', () => {
   // it.only('rub input should have a value with a rub amount', () => { //only запускает только этот конкретный тест. позволяет определить какой именно тест не проходит
@@ -42,6 +49,11 @@ describe('when rendered', () => {
 
     expect(screen.getByLabelText(/Сумма в долларах/))
       .toHaveValue(2.38);
+  })
+
+  it('should call the useConverter hook with a course value from the store', () => {
+    renderWithStore(<Converter  useConverter={useConverterMock}/>, {state: stateMock});
+    expect(mockInitialRender).toHaveBeenCalledWith(100500)
   })
 })
 

@@ -7,7 +7,6 @@ export function Converter({ useConverter = converterHook }) { // такая ко
   const initialCourse = useSelector(selectCourse);
   const { usd, rub, updateUsd, updateRub } = useConverter(100, initialCourse);
 
-
   return (
 
     <form className={styles.converter}>
